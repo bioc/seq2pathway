@@ -1,12 +1,20 @@
+seq2pathway 1.1.6: 
+- Corrected the python path for Linux users
+
+seq2pathway 1.1.4: 
+- Update the Fisher's exact test used mouse gene background. Replace the mm10 GENCODE database V3 with V4 in the seq2pathway.data 
+- update package maintainer 
+
 seq2pathway 1.1.2:
 - add citation
 
-seq2pathway 1.0.1:
+seq2pathway 1.0.2:
 - add parameter UTR3 in function runseq2gene
 
 seq2pathway 1.0.0:
 - Modify function gene2pathway_test
 - Correct some help type
+
 seq2pathway 0.99.0:
 
 - First submit to Bioconductor.

@@ -187,8 +187,8 @@ GO_GENCODE_df<-GO_GENCODE_df_hg_v20
 data(GO_GENCODE_df_hg_v19,package="seq2pathway.data")
 GO_GENCODE_df<-GO_GENCODE_df_hg_v19
 }else if(genome=="mm10"){
-data(GO_GENCODE_df_mm_vM3,package="seq2pathway.data")
-GO_GENCODE_df<-GO_GENCODE_df_mm_vM3
+data(GO_GENCODE_df_mm_vM4,package="seq2pathway.data")
+GO_GENCODE_df<-GO_GENCODE_df_mm_vM4
 }else if(genome=="mm9"){
 data(GO_GENCODE_df_mm_vM1,package="seq2pathway.data")
 GO_GENCODE_df<-GO_GENCODE_df_mm_vM1
@@ -329,8 +329,8 @@ Msig_GENCODE_df<-Msig_GENCODE_df_hg_v20
 data(Msig_GENCODE_df_hg_v19,package="seq2pathway.data")
 Msig_GENCODE_df<-Msig_GENCODE_df_hg_v19
 }else if(genome=="mm10"){
-data(Msig_GENCODE_df_mm_vM3,package="seq2pathway.data")
-Msig_GENCODE_df<-Msig_GENCODE_df_mm_vM3
+data(Msig_GENCODE_df_mm_vM4,package="seq2pathway.data")
+Msig_GENCODE_df<-Msig_GENCODE_df_mm_vM4
 }else if(genome=="mm9"){
 data(Msig_GENCODE_df_mm_vM1,package="seq2pathway.data")
 Msig_GENCODE_df<-Msig_GENCODE_df_mm_vM1
@@ -685,6 +685,10 @@ runseq2gene <-
     ### assign the path of main function
     path<-paste(system.file(package="seq2pathway"),"/scripts/Function_PeakMutationAnnotation_GENCODE_05182015.py",sep="/")
     
+    ## decide the platform
+    tmp <- sessionInfo()
+    mySession <- ifelse(length(grep("Windows",tmp))==0, "L","W")
+    
     ###wrap invoke file
     name<-paste("inputfile",gsub(":","_",gsub("-","",gsub(" ","_",Sys.time()))),"seq2gene_log.py",sep="_")
     
@@ -711,7 +715,7 @@ runseq2gene <-
     write.table(NULL, file=tmp_ref_file,sep="\t",quote=FALSE,row.names = FALSE)
     tmp_ref_file = gsub("\\","/",tmp_ref_file,fixed =TRUE)
     
-    sink(paste(tempdir(),"\\",name,sep=""))
+    if (mySession=="W") sink(paste(tempdir(),"\\",name,sep="")) else sink(file.path(tempdir(),name,fsep = .Platform$file.sep))
     ###fixed headers import modules
     cat("import sys, string, math, shutil, math, os, gzip, time, glob, multiprocessing",sep="\n")
     cat("from shutil import rmtree",sep="\n")
@@ -745,9 +749,40 @@ runseq2gene <-
     cat(paste("UTR3=",UTR3,sep=""),sep="\n")
     cat("FindPeakMutation(inputfile,outputfile,outputfileUTR3,tmp_ref_file,search_radius,promoter_radius,promoter_radius2,genome,adjacent,pwd,SNP,PromoterStop,NearestTwoDirection,UTR3)")
     sink()
+    if(!file.exists(file.path(tempdir(),name))) stop ("The python command hasn't been generated correctly!") 
     
     #invoke python
-    command <- paste("C:/Python27/python ", tempdir(),"\\",name,sep="")
+    mypython <- Sys.which("python")
+    if (length(grep("python", mypython))==0 )
+        {
+         Sys.setenv(PATH=paste("C:\\Python27;",Sys.getenv("PATH"),sep=""))
+         mypython <- Sys.which("python")
+         warning(
+"Python not found! Python needs to be in the PATH variable, which you can set by doing:","\n\n",
+"Setting path at Unix/Linux","\n",
+"To add the Python directory to the path for a particular session in Unix:","\n",
+"\t","In the csh shell: type setenv PATH \"",as.character("$PATH:/usr/local/bin/python"),"\" and press Enter.","\n",
+"\t","In the bash shell (Linux): type export PATH=\"",as.character("$PATH:/usr/local/bin/python"),"\" and press Enter.","\n",
+"\t","In the sh or ksh shell: type PATH=\"",as.character("$PATH:/usr/local/bin/python"),"\" and press Enter.","\n",
+"Note: /usr/local/bin/python is the path of the Python directory ","\n",
+"Setting path at Windows","\n",
+"To add the Python directory to the path for a particular session in Windows:","\n",
+"\t","At the command prompt: type","\n",
+"\t","path %path%;C:\\Python27 and press Enter. ","\n",
+"Note: C:\\Python27 is the path of the by default Python directory ","\n\n",
+"If you are a Windows user and failed here, please add the Python directory to the path for a particular session in Windows!","\n",
+"If you are a Windows user and get results here, C:\\Python27 is where you Python located","\n"
+)
+
+         } 
+         
+    # command <- paste("C:/Python27/python ", tempdir(),"\\",name,sep="")   # old version only works on Windows, not to use
+    if (mySession=="L")  {
+         command <- file.path(mypython," ",tempdir(),"/", name,fsep = "")  # for Linux/Mac
+                 } else {
+         command <- paste(mypython," ",tempdir(),"\\",name, sep="")     # for Windows
+                         }
+    # cat(command, "\n")             
     response <- system(command, intern=TRUE)
     anno_result<-read.table(file=tmpoutfile_UTR3,header=TRUE,sep="\t")
     seq2gene_result=list()

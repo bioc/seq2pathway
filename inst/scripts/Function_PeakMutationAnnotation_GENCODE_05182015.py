@@ -6,7 +6,7 @@
 ###Add stop at intron(adjacent)
 ###only nearest one if peak is not located in bidirectional region, instead of nearest left and right
 from bisect import *
-import ast, math, sys, string, math, shutil, math, os, gzip, time, glob, multiprocessing
+import ast, math, sys, string, math, shutil, os, gzip, time, glob, multiprocessing
 from datetime import datetime
 from shutil import rmtree
 

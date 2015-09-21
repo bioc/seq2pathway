@@ -71,25 +71,10 @@
 
 %section1: abstract
 %-------------------------------------------
-\section{Introduction}
+\section{Abstract}
 %--------------------------------------------
-%------------------------------------
-\subsection{Abstract}
-%-------------------------------------
-  \texttt{Seq2pathway} is a novel computational tool to analyze functional gene-sets (including signaling pathways) using variable next-generation sequencing data. Integral to this tool are the ``seq2gene'' and ``gene2pathway'' components in series that infer a quantitative pathway-level profile for each sample. The \texttt{seq2gene} function assigns phenotype-associated significance of genomic regions to gene-level scores, where the significance could be p-values of SNPs or point mutations, protein-binding affinity, or transcriptional expression level. The \texttt{seq2gene} function has the feasibility to assign non-exon regions to a range of neighboring genes besides the nearest one, thus facilitating the study of functional non-coding elements\cite{yang14}. Then the \texttt{gene2pathway} summarizes gene-level measurements to pathway-level scores, comparing the quantity of significance for gene members within a pathway with those outside a pathway. It implements an improved FAIME algorithm together with other three conventional gene-set enrichment analysis methods\cite{yang12}. The output of \texttt{seq2pathway} is a general structured pathway scores, thus allowing one to functionally interpret phenotype-associated significance of genomic regions derived by next generational sequencing experiments. 
-  
 
-%------------------------------------
-\subsection{Cite seq2pathway}
-%-------------------------------------
-This free open-source software implements academic research
-by the authors and NIH fundings.  If you use it, please support
-the project by citing the journal article below:\\
-\\
-\texttt{Seq2pathway: an R/Bioconductor package for pathway analysis of next-generation sequencing data.}\\
-Wang B, Cunningham JM, Holly Yang X.\\
-Bioinformatics. 2015 May 15. pii: btv289. \\
-PMID: 25979472 
+  \texttt{Seq2pathway} is a novel computational tool to analyze functional gene-sets (including signaling pathways) using variable next-generation sequencing data\cite{yang15}. Integral to this tool are the ``seq2gene'' and ``gene2pathway'' components in series that infer a quantitative pathway-level profile for each sample. The \texttt{seq2gene} function assigns phenotype-associated significance of genomic regions to gene-level scores, where the significance could be p-values of SNPs or point mutations, protein-binding affinity, or transcriptional expression level. The \texttt{seq2gene} function has the feasibility to assign non-exon regions to a range of neighboring genes besides the nearest one, thus facilitating the study of functional non-coding elements\cite{yang14}. Then the \texttt{gene2pathway} summarizes gene-level measurements to pathway-level scores, comparing the quantity of significance for gene members within a pathway with those outside a pathway. It implements an improved FAIME algorithm together with other three conventional gene-set enrichment analysis methods\cite{yang12}. The output of \texttt{seq2pathway} is a general structured pathway scores, thus allowing one to functionally interpret phenotype-associated significance of genomic regions derived by next generational sequencing experiments.   
 
 %section2: installation
 %-------------------------------------------
@@ -179,7 +164,7 @@ Here we introduce these two main functions separately. For each function, we des
         \label{figure:seq2gene}
       \end{figure}
       
-      Figure \ref{figure:seq2gene} gives the flowchart for the seq2gene process. Built on our previous publication\cite{yang14}, the current seq2gene uses the reference human genome annotation for the ENCODE project (GENCODE) \cite{Derrien12} version 19 for human genome and version M3 for mouse genome (Ensembl version 76 in GRCm38). ENCODE is a re-merge between the Ensembl annotation and updates from HAVANA(http://www.gencodegenes.org/releases/). Table \ref{table:statistics} lists the statistics of the gene annotations that are used by seq2pathway. 
+      Figure \ref{figure:seq2gene} gives the flowchart for the seq2gene process. Built on our previous publication\cite{yang14}, the current seq2gene uses the reference human genome annotation for the ENCODE project (GENCODE) \cite{Derrien12} version 19 for human genome and version M4 for mouse genome (Ensembl version 78 in GRCm38). ENCODE is a re-merge between the Ensembl annotation and updates from HAVANA(http://www.gencodegenes.org/releases/). Table \ref{table:statistics} lists the statistics of the gene annotations that are used by seq2pathway. 
 
       \begin{table}[H]
         \caption{Statistics about the seq2pathway-used GENCODE annotation.}
@@ -197,7 +182,7 @@ Here we introduce these two main functions separately. For each function, we des
           \hline
           Human & 19(Dec.2013) & GRCh74/hg19 & 20345 & 13870 & 9013 & 14206 & 57820\\ 
           \hline
-          Mouse & M3(Apr.2014) & GRCm38/mm10 & 22026 & 5385 & 5853 & 7388 & 41128\\
+          Mouse & M4(Aug.2014) & GRCm38.p3/mm10 & 22032 & 6951 & 5853 & 7957 & 43346\\
           \hline
           \end{tabular}
           \label{table:statistics}
@@ -1189,9 +1174,13 @@ sessionInfo();
 
 \begin{thebibliography}{50}
 
+    \bibitem{yang15} B. Wang, J. M. Cunningham, X. Yang,
+    \emph{Seq2pathway: an R/Bioconductor package for pathway analysis of next-generation sequencing data}, 
+    Bioinformatics \textbf{pii: btv289} (2015).
+
     \bibitem{yang14} X. Yang, B. Wang, J. M. Cunningham,
     \emph{Identification of epigenetic modifications that contribute to pathogenesis in therapy-related AML: Effective integration of genome-wide histone modification with transcriptional profiles}, 
-    preprint (2015),  BMC Medical Genomics(accepted).
+    BMC Med Genomics \textbf{8S2:S6} (2015), e1002350.
 
     \bibitem{yang12} X. Yang, K. Regan, Y. Huang, Q. Zhang, J. Li, T. Y. Seiwert, et al.,
     \emph{Single sample expression-anchored mechanisms predict survival in head and neck cancer}, 

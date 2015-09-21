@@ -143,7 +143,9 @@ Bin Wang
 
 
 \examples{
-  \dontrun{res=runseq2gene(inputfile=Chipseq_Peak_demo)    }
+#  \dontrun{res=runseq2gene(inputfile=Chipseq_Peak_demo)    }
+    data(Chipseq_Peak_demo)
+    res=runseq2gene(inputfile=Chipseq_Peak_demo)  
 }
 
 \keyword{methods}
