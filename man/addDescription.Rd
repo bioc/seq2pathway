@@ -40,8 +40,9 @@ Bin Wang
 
 
 \examples{
+  require(biomaRt)
   data(dat_chip)
-  gene_description<-addDescription(genome="hg19",genevector=rownames(dat_chip))
+  gene_description<-addDescription(genome="hg19",genevector=rownames(dat_chip)[1:3])
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

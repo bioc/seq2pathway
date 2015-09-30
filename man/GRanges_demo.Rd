@@ -16,7 +16,8 @@ GRanges object
 }
 
 \references{
-Lawrence M, Huber W, Pages H, Aboyoun P, Carlson M, Gentleman R, Morgan M and Carey V(2013). "Software for Computing and Annotating Genomic Ranges." PLoS Computational Biology, 9.
+Lawrence M, Huber W, Pages H, Aboyoun P, Carlson M, Gentleman R, Morgan M and Carey V(2013). 
+"Software for Computing and Annotating Genomic Ranges." PLoS Computational Biology, 9.
 }
 \examples{
 data(GRanges_demo)

@@ -5,7 +5,7 @@
 A wrapper function to perform conditional Fisher's exact test, using custom-defined genesets.
 }
 \description{
-A wrapper function to perform conditional Fisher's exact test, using custom-defined genesets.
+A wrapper function to perform conditional FET, using custom-defined genesets.
 }
 \usage{
 FisherTest_MsigDB(gsmap, gs, genome=c("hg38","hg19","mm10","mm9"), 
@@ -13,14 +13,19 @@ FisherTest_MsigDB(gsmap, gs, genome=c("hg38","hg19","mm10","mm9"),
 }
 \arguments{
   \item{gsmap}{
-  An R GSA.genesets object defined by the package "GSA" for functional gene-set (or termed as pathway for simplification). User can call the GSA.read.gmt function in R GSA package to load customized gene-sets with a .gmt format. 
+  An R GSA.genesets object defined by the package "GSA" for functional gene-set 
+(or termed as pathway for simplification). 
+User can call the GSA.read.gmt function in R GSA package 
+to load customized gene-sets with a .gmt format. 
 }
   \item{gs}{A characteristic vector of gene symbols, the input genelist.}
   \item{genome}{
-  A character specifies the genome type. Currently, choice of "hg38", "hg19", "mm10", and "mm9" is supported.
+  A character specifies the genome type. Currently, 
+choice of "hg38", "hg19", "mm10", and "mm9" is supported.
   }
   \item{min_Intersect_Count}{
-  A number decides the cutoff of the minimum number of intersected genes when reporting Fisher's exact tested results.
+  A number decides the cutoff of the minimum number of intersected genes 
+when reporting Fisher's exact tested results.
   }
 
 
@@ -33,8 +38,10 @@ A data frame of Fisher's exact tested result with the following columns:
   \item{Fisher_Pvalue}{the raw Pvalues} 
   \item{Fisher_odds}{estimate of the odds ratios} 
   \item{FDR}{the multi-test adjusted Pvalues using the Benjamini and Hochberg method} 
-  \item{Intersect_Count}{the sizes of the overlap between the MSigDB gene-set genes and the input genelist} 
-  \item{MsigDB_gene_inBackground}{the counts of genes among each MSigDB gene-set that are also within genome background}
+  \item{Intersect_Count}{the sizes of the overlap between 
+the MSigDB gene-set genes and the input genelist} 
+  \item{MsigDB_gene_inBackground}{the counts of genes among each MSigDB gene-set that 
+are also within genome background}
   \item{MsigDB_gene_raw_Count}{the original counts of genes in each MSigDB gene-set}  
   \item{Intersect_gene}{the intersecting genes' symbols}
 }
@@ -44,14 +51,22 @@ Bin Wang
 }
 
 
-
-
-
 \examples{
   data(dat_chip)
   data(MsigDB_C5,package="seq2pathway.data")
-  FS_test<-FisherTest_MsigDB(gsmap=MsigDB_C5, gs=rownames(dat_chip)[1:5], genome="hg19", min_Intersect_Count=1)
-
+  #generate a demo GSA.genesets object
+  demoDB <- MsigDB_C5
+  x=100
+  for(i in 1:3) demoDB[[i]]<-MsigDB_C5[[i]][1:x]
+  FS_test<-FisherTest_MsigDB(gsmap=demoDB, 
+	 sample(unlist(demoDB$genesets),10), genome="hg19",
+	 min_Intersect_Count=1)
+  FS_test[1:3,]
+  \dontrun{
+  FS_test<-FisherTest_MsigDB(gsmap=MsigDB_C5, 
+	gs=rownames(dat_chip), genome="hg19", 
+	min_Intersect_Count=1)
+	}
 }
 
 \keyword{methods}
