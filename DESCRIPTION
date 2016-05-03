@@ -2,7 +2,7 @@ Package: seq2pathway
 Type: Package
 Title: a novel tool for functional gene-set (or termed as pathway)
         analysis of next-generation sequencing data
-Version: 1.3.0
+Version: 1.4.0
 Date: 2015-09-18
 Author: Xinan Yang <xyang2@uchicago.edu>; Bin Wang <binw@uchicago.edu>
 Maintainer: Xinan Yang <xyang2@uchicago.edu> with contribution from Lorenzo Pesce <lpesce@uchicago.edu> and Ana Marija Sokovic <anamarija@uchicago.edu>
