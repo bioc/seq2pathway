@@ -86,9 +86,10 @@ Currently, \texttt{seq2pathway}  works in both \texttt{Linux} and \texttt{Window
 If you don't have biocLite() you can get it like this:
 
 \begin{verbatim}
-source("http://bioconductor.org/biocLite.R")
-biocLite("seq2pathway.data")
-biocLite("seq2pathway")
+if (!requireNamespace("BiocManager", quietly=TRUE))
+    install.packages("BiocManager")
+BiocManager::install("seq2pathway.data")
+BiocManager::install("seq2pathway")
 \end{verbatim}
 
 Now install seq2pathway and the data package:
