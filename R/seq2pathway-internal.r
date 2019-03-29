@@ -1430,4 +1430,30 @@ return(TResult)
 
 }
 
-
+#function 17
+plotTop10 = function(res,fdr=0.05,or=2,myfileID=NULL){
+  if(nrow(res)>0)
+  { 
+  	 if (!class(res) %in% c("matrix","data.frame")) stop('Pls give a matrix or data.frame as the "res" input!')
+  	 if(!any(grepl("FDR", colnames(res)))) stop('Pls give a matrix or data.frame with column name "FDR"')
+  	 if(!any(grepl("Fisher_odds", colnames(res)))) stop('Pls give a matrix or data.frame with column name "Fisher_odds"')
+  	 #if(!grepl("GeneSet", colnames(res))) stop('Pls give a matrix or data.frame with column name "GeneSet"')
+  	 res = subset(res,Fisher_odds>or & FDR<fdr)
+    if(nrow(res)>10) {res <- res[1:10,]}
+    # because barplot() plots from bottom up !! need to re-order the inputs 
+    res <- res[order(res$FDR,decreasing=T),]
+    
+    tmp <- barplot(res$Fisher_odds, 
+                   main=paste0(myfileID,' n=',nrow(res)), 
+                   horiz=TRUE,
+                   xlab="grey bar: Fisher_odds / red line: -log(FDR)",
+                   xlim =c(0,max(c(-log10(res$FDR), res$Fisher_odds))))
+    lines( y=tmp, -log10(res$FDR), col="red", type="o",pch=19,lwd=2)
+    if('GeneSet' %in% colnames(res)){
+      text(x = fdr,y=tmp, res$GeneSet, pos=4)
+    }else if('Intersect_gene' %in% colnames(res)){
+      text(x = fdr,y=tmp, res$Intersect_gene, pos=4)
+    }
+    abline(v=-log10(fdr), lty=2)
+  }
+}
