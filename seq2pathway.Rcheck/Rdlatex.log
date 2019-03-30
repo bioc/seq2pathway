@@ -1,0 +1,369 @@
+Hmm ... looks like a package
+
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+LaTeX2e <2018-04-01> patch level 2
+Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
+(./Rd2.tex
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/bk10.clo))
+(/Library/Frameworks/R.framework/Resources/share/texmf/tex/latex/Rd.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/ifthen.sty)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/tools/longtable.sty)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/tools/bm.sty)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/alltt.sty)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/tools/verbatim.sty)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/url/url.sty)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/textcomp.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/ts1enc.def
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/ts1enc.dfu)))
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/fontenc.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/t1enc.def))
+(/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/times.sty)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/inconsolata/zi4.sty
+`inconsolata-zi4' v1.112, 2017/01/04 Text macros for Inconsolata (msharpe)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(/usr/local/texlive/2018/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/local/texlive/2018/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+(/usr/local/texlive/2018/texmf-dist/tex/generic/xkeyval/keyval.tex)))))
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/color.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics-def/pdftex.def))
+(/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty))
+(/usr/local/texlive/2018/texmf-dist/tex/generic/ifxetex/ifxetex.sty)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/auxhook.sty)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/kvoptions.sty)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/latexconfig/hyperref.cfg))
+(/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty))
+
+Package hyperref Warning: Option `hyperindex' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+
+Package hyperref Warning: Option `pagebackref' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/makeidx.sty)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def))
+Writing index file Rd2.idx
+No file Rd2.aux.
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/ts1cmr.fd)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+(/usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/gettitlestring.sty))
+(/usr/local/texlive/2018/texmf-dist/tex/latex/inconsolata/t1zi4.fd)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/t1phv.fd)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/utf8.def) [1{/usr/local/texl
+ive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] [5]
+[6] [7]
+Overfull \hbox (36.98705pt too wide) in paragraph at lines 409--410
+[]\T1/ptm/m/n/10 A Boolean value in-di-cates whether to keep miss-ing val-ues o
+r not when method="FAIME".
+[8]
+Overfull \hbox (17.45633pt too wide) in paragraph at lines 504--507
+\T1/ptm/m/n/10 tion, Fish-erTest_MsigDB func-tion, sin-gle el-e-ment of re-sult
+ list of gene2pathway_test
+
+Overfull \hbox (28.83734pt too wide) in paragraph at lines 504--507
+\T1/ptm/m/n/10 func-tion or any ta-ble with col-names : 'FDR', 'Fisher_odds', '
+In-ter-sect_gene'/'GeneSet' 
+[9] [10]
+Overfull \hbox (4.38722pt too wide) in paragraph at lines 653--654
+[]\T1/ptm/m/n/10 A char-ac-ter spec-i-fies the re-la-tion-ship be-tween the ge-
+nomic re-gion and the mapped
+[11] [12]
+Overfull \hbox (2.09758pt too wide) in paragraph at lines 766--767
+[]\T1/ptm/m/n/10 Or, the in-put for-mat should be GRanges ob-ject(from R pack-a
+ge Ge-nom-i-cRanges)
+[13]
+Overfull \hbox (26.35779pt too wide) in paragraph at lines 828--830
+[]\T1/ptm/m/n/10 A boolean val-ues. By de-fault is FALSE. When true, ex-e-cutes
+ func-tion of gene2pathway
+
+Overfull \hbox (9.70766pt too wide) in paragraph at lines 836--838
+\T1/ptm/m/n/10 lapseRows in pack-age WGCNA. The func-tion "col-lapsemethod" use
+s this paramter
+
+Overfull \hbox (36.98705pt too wide) in paragraph at lines 848--849
+[]\T1/ptm/m/n/10 A Boolean value in-di-cates whether to keep miss-ing val-ues o
+r not when method="FAIME".
+
+Overfull \hbox (11.67638pt too wide) in paragraph at lines 862--863
+[]\T1/ptm/m/n/10 An R list of sev-eral data frames. The re-sults of func-tion s
+eq2gene, Fisher's ex-act test and gene2pathway
+[14]
+No file Rd2.ind.
+[15] (./Rd2.aux)
+
+Package rerunfilecheck Warning: File `Rd2.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+ )
+(see the transcript file for additional information){/usr/local/texlive/2018/te
+xmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive/2018/texmf-dist/fonts/
+enc/dvips/inconsolata/i4-t1-0.enc}</usr/local/texlive/2018/texmf-dist/fonts/typ
+e1/public/inconsolata/Inconsolata-zi4r.pfb></usr/local/texlive/2018/texmf-dist/
+fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/t
+ype1/urw/times/utmb8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/t
+imes/utmr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8
+a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on Rd2.pdf (15 pages, 115997 bytes).
+Transcript written on Rd2.log.
+This is makeindex, version 2.15 [TeX Live 2018] (kpathsea + Thai support).
+Scanning input file Rd2.idx....done (22 entries accepted, 0 rejected).
+Sorting entries....done (98 comparisons).
+Generating output file Rd2.ind....done (49 lines written, 0 warnings).
+Output written in Rd2.ind.
+Transcript written in Rd2.ilg.
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+LaTeX2e <2018-04-01> patch level 2
+Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
+(./Rd2.tex
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/bk10.clo))
+(/Library/Frameworks/R.framework/Resources/share/texmf/tex/latex/Rd.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/ifthen.sty)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/tools/longtable.sty)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/tools/bm.sty)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/alltt.sty)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/tools/verbatim.sty)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/url/url.sty)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/textcomp.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/ts1enc.def
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/ts1enc.dfu)))
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/fontenc.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/t1enc.def))
+(/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/times.sty)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/inconsolata/zi4.sty
+`inconsolata-zi4' v1.112, 2017/01/04 Text macros for Inconsolata (msharpe)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(/usr/local/texlive/2018/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/local/texlive/2018/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+(/usr/local/texlive/2018/texmf-dist/tex/generic/xkeyval/keyval.tex)))))
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/color.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics-def/pdftex.def))
+(/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty))
+(/usr/local/texlive/2018/texmf-dist/tex/generic/ifxetex/ifxetex.sty)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/auxhook.sty)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/kvoptions.sty)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/latexconfig/hyperref.cfg))
+(/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty))
+
+Package hyperref Warning: Option `hyperindex' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+
+Package hyperref Warning: Option `pagebackref' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/makeidx.sty)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def))
+Writing index file Rd2.idx
+(./Rd2.aux) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/ts1cmr.fd)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+(/usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/gettitlestring.sty))
+(./Rd2.out) (./Rd2.out)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/inconsolata/t1zi4.fd)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/t1phv.fd) (./Rd2.toc
+[1{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}])
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/utf8.def) [2] [3] [4]
+[5] [6] [7]
+Overfull \hbox (36.98705pt too wide) in paragraph at lines 409--410
+[]\T1/ptm/m/n/10 A Boolean value in-di-cates whether to keep miss-ing val-ues o
+r not when method="FAIME".
+[8]
+Overfull \hbox (17.45633pt too wide) in paragraph at lines 504--507
+\T1/ptm/m/n/10 tion, Fish-erTest_MsigDB func-tion, sin-gle el-e-ment of re-sult
+ list of gene2pathway_test
+
+Overfull \hbox (28.83734pt too wide) in paragraph at lines 504--507
+\T1/ptm/m/n/10 func-tion or any ta-ble with col-names : 'FDR', 'Fisher_odds', '
+In-ter-sect_gene'/'GeneSet' 
+[9] [10]
+Overfull \hbox (4.38722pt too wide) in paragraph at lines 653--654
+[]\T1/ptm/m/n/10 A char-ac-ter spec-i-fies the re-la-tion-ship be-tween the ge-
+nomic re-gion and the mapped
+[11] [12]
+Overfull \hbox (2.09758pt too wide) in paragraph at lines 766--767
+[]\T1/ptm/m/n/10 Or, the in-put for-mat should be GRanges ob-ject(from R pack-a
+ge Ge-nom-i-cRanges)
+[13]
+Overfull \hbox (26.35779pt too wide) in paragraph at lines 828--830
+[]\T1/ptm/m/n/10 A boolean val-ues. By de-fault is FALSE. When true, ex-e-cutes
+ func-tion of gene2pathway
+
+Overfull \hbox (9.70766pt too wide) in paragraph at lines 836--838
+\T1/ptm/m/n/10 lapseRows in pack-age WGCNA. The func-tion "col-lapsemethod" use
+s this paramter
+
+Overfull \hbox (36.98705pt too wide) in paragraph at lines 848--849
+[]\T1/ptm/m/n/10 A Boolean value in-di-cates whether to keep miss-ing val-ues o
+r not when method="FAIME".
+
+Overfull \hbox (11.67638pt too wide) in paragraph at lines 862--863
+[]\T1/ptm/m/n/10 An R list of sev-eral data frames. The re-sults of func-tion s
+eq2gene, Fisher's ex-act test and gene2pathway
+[14] (./Rd2.ind [15] [16]) (./Rd2.aux)
+
+Package rerunfilecheck Warning: File `Rd2.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+ )
+(see the transcript file for additional information){/usr/local/texlive/2018/te
+xmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive/2018/texmf-dist/fonts/
+enc/dvips/inconsolata/i4-t1-0.enc}</usr/local/texlive/2018/texmf-dist/fonts/typ
+e1/public/inconsolata/Inconsolata-zi4r.pfb></usr/local/texlive/2018/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/f
+onts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/ty
+pe1/urw/times/utmb8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/ti
+mes/utmr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a
+.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on Rd2.pdf (16 pages, 126070 bytes).
+Transcript written on Rd2.log.
+This is makeindex, version 2.15 [TeX Live 2018] (kpathsea + Thai support).
+Scanning input file Rd2.idx....done (22 entries accepted, 0 rejected).
+Sorting entries....done (98 comparisons).
+Generating output file Rd2.ind....done (49 lines written, 0 warnings).
+Output written in Rd2.ind.
+Transcript written in Rd2.ilg.
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+LaTeX2e <2018-04-01> patch level 2
+Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
+(./Rd2.tex
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/bk10.clo))
+(/Library/Frameworks/R.framework/Resources/share/texmf/tex/latex/Rd.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/ifthen.sty)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/tools/longtable.sty)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/tools/bm.sty)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/alltt.sty)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/tools/verbatim.sty)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/url/url.sty)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/textcomp.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/ts1enc.def
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/ts1enc.dfu)))
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/fontenc.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/t1enc.def))
+(/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/times.sty)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/inconsolata/zi4.sty
+`inconsolata-zi4' v1.112, 2017/01/04 Text macros for Inconsolata (msharpe)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(/usr/local/texlive/2018/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/local/texlive/2018/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+(/usr/local/texlive/2018/texmf-dist/tex/generic/xkeyval/keyval.tex)))))
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/color.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics-def/pdftex.def))
+(/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty))
+(/usr/local/texlive/2018/texmf-dist/tex/generic/ifxetex/ifxetex.sty)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/auxhook.sty)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/kvoptions.sty)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/latexconfig/hyperref.cfg))
+(/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty))
+
+Package hyperref Warning: Option `hyperindex' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+
+Package hyperref Warning: Option `pagebackref' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/makeidx.sty)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def))
+Writing index file Rd2.idx
+(./Rd2.aux) (/usr/local/texlive/2018/texmf-dist/tex/latex/base/ts1cmr.fd)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+(/usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/gettitlestring.sty))
+(./Rd2.out) (./Rd2.out)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/inconsolata/t1zi4.fd)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/t1phv.fd) (./Rd2.toc
+[1{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}])
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/utf8.def) [2] [3] [4]
+[5] [6] [7]
+Overfull \hbox (36.98705pt too wide) in paragraph at lines 409--410
+[]\T1/ptm/m/n/10 A Boolean value in-di-cates whether to keep miss-ing val-ues o
+r not when method="FAIME".
+[8]
+Overfull \hbox (17.45633pt too wide) in paragraph at lines 504--507
+\T1/ptm/m/n/10 tion, Fish-erTest_MsigDB func-tion, sin-gle el-e-ment of re-sult
+ list of gene2pathway_test
+
+Overfull \hbox (28.83734pt too wide) in paragraph at lines 504--507
+\T1/ptm/m/n/10 func-tion or any ta-ble with col-names : 'FDR', 'Fisher_odds', '
+In-ter-sect_gene'/'GeneSet' 
+[9] [10]
+Overfull \hbox (4.38722pt too wide) in paragraph at lines 653--654
+[]\T1/ptm/m/n/10 A char-ac-ter spec-i-fies the re-la-tion-ship be-tween the ge-
+nomic re-gion and the mapped
+[11] [12]
+Overfull \hbox (2.09758pt too wide) in paragraph at lines 766--767
+[]\T1/ptm/m/n/10 Or, the in-put for-mat should be GRanges ob-ject(from R pack-a
+ge Ge-nom-i-cRanges)
+[13]
+Overfull \hbox (26.35779pt too wide) in paragraph at lines 828--830
+[]\T1/ptm/m/n/10 A boolean val-ues. By de-fault is FALSE. When true, ex-e-cutes
+ func-tion of gene2pathway
+
+Overfull \hbox (9.70766pt too wide) in paragraph at lines 836--838
+\T1/ptm/m/n/10 lapseRows in pack-age WGCNA. The func-tion "col-lapsemethod" use
+s this paramter
+
+Overfull \hbox (36.98705pt too wide) in paragraph at lines 848--849
+[]\T1/ptm/m/n/10 A Boolean value in-di-cates whether to keep miss-ing val-ues o
+r not when method="FAIME".
+
+Overfull \hbox (11.67638pt too wide) in paragraph at lines 862--863
+[]\T1/ptm/m/n/10 An R list of sev-eral data frames. The re-sults of func-tion s
+eq2gene, Fisher's ex-act test and gene2pathway
+[14] (./Rd2.ind [15] [16]) (./Rd2.aux) )
+(see the transcript file for additional information){/usr/local/texlive/2018/te
+xmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive/2018/texmf-dist/fonts/
+enc/dvips/inconsolata/i4-t1-0.enc}</usr/local/texlive/2018/texmf-dist/fonts/typ
+e1/public/inconsolata/Inconsolata-zi4r.pfb></usr/local/texlive/2018/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/f
+onts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/ty
+pe1/urw/times/utmb8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/ti
+mes/utmr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a
+.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on Rd2.pdf (16 pages, 126261 bytes).
+Transcript written on Rd2.log.
+Saving output to ‘seq2pathway-manual.pdf’ ...
+Done
+You may want to clean up by 'rm -Rf /var/folders/ty/w_mlflsn6z31hxx3rqgk4jdh0000gn/T//RtmpT1axxX/Rd2pdf80331af2fc3c'

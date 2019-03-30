@@ -1,0 +1,19 @@
+Chipseq_Peak_demo       chip seq loci data example
+FisherTest_GO_BP_MF_CC
+                        A wrapper function to perform the Fisher's
+                        exact test, using GO-defined genesets.
+FisherTest_MsigDB       A wrapper function to perform conditional
+                        Fisher's exact test, using custom-defined
+                        genesets.
+GRanges_demo            loci information with GRanges format
+addDescription          Retrieve "gene description" attributes for gene
+                        symbol.
+dat_RNA                 RNA sequence data example
+dat_chip                chip seq data example
+gene2pathway_test       A wrapper function to perform gene2pathway
+                        test.
+plotTop10               A wrapper function to plot top10 test results.
+runseq2gene             R wrapped python function to map genomic
+                        regions on the sequence-level to genes.
+runseq2pathway          An function to perform the runseq2pathway
+                        algorithm(s).

@@ -1,0 +1,30 @@
+seq2pathway 1.15.0: 
+- Added function plotTop10
+
+seq2pathway 1.1.8: 
+- Used Sys.info() rather than sessionInfor() to extract platform information
+- Avoided the use of "\\" in R 
+- Added a parameter "Ontology" to the function FisherTest_GO_BP_MF_CC()
+
+seq2pathway 1.1.6: 
+- Corrected the python path for Linux users
+- Activated the demo code in R help files and vignettes
+- Changed the maintainer
+
+seq2pathway 1.1.4: 
+- Update the Fisher's exact test used mouse gene background. 
+- Replace the mm10 GENCODE database V3 with V4 in the seq2pathway.data 
+
+seq2pathway 1.1.2:
+- add citation
+
+seq2pathway 1.0.2:
+- add parameter UTR3 in function runseq2gene
+
+seq2pathway 1.0.0:
+- Modify function gene2pathway_test
+- Correct some help type
+
+seq2pathway 0.99.0:
+- First submit to Bioconductor.
+
