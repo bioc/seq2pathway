@@ -195,9 +195,9 @@ if(!Ontology %in% c("GOterm","BP","MF","CC"))
  { warning ("Ontology other than 'GOterm','BP','MF' and 'CC' is test")
    if(length(newOntology)<2) {
 	stop ("newOntology should be a list of two lists with the same list names.")}
-   if(length(newOntology[[1]])!=length(newOntology[[2]])){ 
+   if(length(newOntology[[1]])!=length(newOntology[[2]])){  
           stop ("newOntology should be a list of two equal-length lists.")}
-   if(names(newOntology[[1]])!=names(newOntology[[2]])){        
+   if(!identical(names(newOntology[[1]]),names(newOntology[[2]]))){    ##changed from names(newOntology[[1]]) != names(newOntology[[2]]) 4/2/2019    
           stop ("the two lists of newOntology should have the same ontology IDs.")}
           }
 if(is.null(newOntology)) 
@@ -1433,12 +1433,7 @@ return(TResult)
 #function 17
 plotTop10 = function(res,fdr=0.05,or=2,myfileID=NULL){
   if(nrow(res)>0)
-  { 
-  	 if (!class(res) %in% c("matrix","data.frame")) stop('Pls give a matrix or data.frame as the "res" input!')
-  	 if(!any(grepl("FDR", colnames(res)))) stop('Pls give a matrix or data.frame with column name "FDR"')
-  	 if(!any(grepl("Fisher_odds", colnames(res)))) stop('Pls give a matrix or data.frame with column name "Fisher_odds"')
-  	 #if(!grepl("GeneSet", colnames(res))) stop('Pls give a matrix or data.frame with column name "GeneSet"')
-  	 res = subset(res,Fisher_odds>or & FDR<fdr)
+  { res = subset(res,Fisher_odds>or & FDR<fdr)
     if(nrow(res)>10) {res <- res[1:10,]}
     # because barplot() plots from bottom up !! need to re-order the inputs 
     res <- res[order(res$FDR,decreasing=T),]
