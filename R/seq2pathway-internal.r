@@ -1278,7 +1278,7 @@ data(Des_CC_list,package="seq2pathway.data")
 data(Des_MF_list,package="seq2pathway.data")
 ############Fisher test
 if(FisherTest==TRUE){
-if(length(DataBase)==1 & DataBase %in% c("GOterm","BP","CC","MF")){
+if(length(DataBase)==1 & all(DataBase %in% c("GOterm","BP","CC","MF"))){
 FS_test<-FisherTest_GO_BP_MF_CC(gs=as.vector(rownames(dat)),genome=genome,
 					min_Intersect_Count=min_Intersect_Count,Ontology=DataBase)
 }else{
@@ -1291,7 +1291,7 @@ FS_test<-FisherTest_MsigDB(gsmap=DataBase,gs=as.vector(rownames(dat)),genome=gen
 gene2pathway_result<-list()
 n.list=0
 #############################rungene2pathway,normalization,empiricalP,summary table
-if(length(DataBase)==1 & DataBase %in% c("GOterm","BP","MF","CC")){
+if(length(DataBase)==1 & all(DataBase %in% c("GOterm","BP","MF","CC"))){
 gene2pathway_result<-list()
 n.list=0
 if(DataBase %in% c("GOterm","BP")){
