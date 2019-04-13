@@ -1068,7 +1068,7 @@ genename<-unique(seq2gene_result_fornext[,2])
 print("Start test..............")
 ############Fisher test
 if(FisherTest==TRUE){
-if(DataBase %in% c("GOterm","BP","MF","CC")){
+if(length(DataBase)==1 & all(DataBase %in% c("GOterm","BP","MF","CC"))){
 FS_test<-FisherTest_GO_BP_MF_CC(gs=as.vector(genename),genome=genome,
 			min_Intersect_Count=min_Intersect_Count,Ontology=DataBase)
 }else{
@@ -1107,8 +1107,8 @@ dat_collapsed$gene<-as.vector(toupper(rownames(dat_collapsed)))
 
 gene2pathway_result<-list()
 n.list=0      
-if(DataBase%in% c("GOterm","BP","CC","MF")){
-if(DataBase %in% c("GOterm","BP")){
+if(length(DataBase)==1 & all(DataBase%in% c("GOterm","BP","CC","MF"))){
+if(length(DataBase)==1 & all(DataBase %in% c("GOterm","BP"))){
 #FAIME
 GO_BP_FAIME<-rungene2pathway(dat=dat_CP,gsmap=GO_BP_list,alpha=alpha,logCheck=logCheck,
 				method="FAIME",na.rm=na.rm)
@@ -1138,7 +1138,7 @@ gene2pathway_result[[n.list]]<-GO_BP_N_P
 names(gene2pathway_result)[n.list]<-c("GO_BP")
 }
 
-if(DataBase %in% c("GOterm","MF")){
+if(length(DataBase)==1 & all(DataBase %in% c("GOterm","MF"))){
 GO_MF_FAIME<-rungene2pathway(dat=dat_CP,gsmap=GO_MF_list,alpha=alpha,logCheck=logCheck,
 				method="FAIME",na.rm=na.rm)
 GO_MF_FAIME_N<-Normalize_F(input=GO_MF_FAIME)
@@ -1163,7 +1163,7 @@ gene2pathway_result[[n.list]]<-GO_MF_N_P
 names(gene2pathway_result)[n.list]<-c("GO_MF")
 }
 
-if(DataBase %in% c("GOterm","CC")){
+if(length(DataBase)==1 & all(DataBase %in% c("GOterm","CC"))){
 GO_CC_FAIME<-rungene2pathway(dat=dat_CP,gsmap=GO_CC_list,alpha=alpha,logCheck=logCheck,
 				method="FAIME",na.rm=na.rm)
 GO_CC_FAIME_N<-Normalize_F(input=GO_CC_FAIME)
@@ -1294,7 +1294,7 @@ n.list=0
 if(length(DataBase)==1 & all(DataBase %in% c("GOterm","BP","MF","CC"))){
 gene2pathway_result<-list()
 n.list=0
-if(DataBase %in% c("GOterm","BP")){
+if(length(DataBase)==1 & all(DataBase %in% c("GOterm","BP"))){
   #method
   GO_BP_method<-rungene2pathway(dat=dat,gsmap=GO_BP_list,alpha=alpha,logCheck=logCheck,
 					method=method,na.rm=na.rm)
@@ -1323,7 +1323,7 @@ if(DataBase %in% c("GOterm","BP")){
   gene2pathway_result[[n.list]]<-GO_BP_N_P
   names(gene2pathway_result)[n.list]<-c("GO_BP")
 }
-  if(DataBase %in% c("GOterm","MF")){
+  if(length(DataBase)==1 & all(DataBase %in% c("GOterm","MF"))){
     GO_MF_method<-rungene2pathway(dat=dat,gsmap=GO_MF_list,alpha=alpha,logCheck=logCheck,
 					method=method,na.rm=na.rm)
     GO_MF_method_N<-Normalize_F(input=GO_MF_method)
@@ -1349,7 +1349,7 @@ if(DataBase %in% c("GOterm","BP")){
   gene2pathway_result[[n.list]]<-GO_MF_N_P
   names(gene2pathway_result)[n.list]<-c("GO_MF")
 }
-  if(DataBase %in% c("GOterm","CC")){
+  if(length(DataBase)==1 & all(DataBase %in% c("GOterm","CC"))){
    GO_CC_method<-rungene2pathway(dat=dat,gsmap=GO_CC_list,alpha=alpha,logCheck=logCheck,
 					method=method,na.rm=na.rm)
    GO_CC_method_N<-Normalize_F(input=GO_CC_method)
