@@ -1444,11 +1444,7 @@ plotTop10 = function(res,fdr=0.05,or=2,myfileID=NULL){
                    xlab="grey bar: Fisher_odds / red line: -log(FDR)",
                    xlim =c(0,max(c(-log10(res$FDR), res$Fisher_odds))))
     lines( y=tmp, -log10(res$FDR), col="red", type="o",pch=19,lwd=2)
-    if('GeneSet' %in% colnames(res)){
-      text(x = fdr,y=tmp, res$GeneSet, pos=4)
-    }else if('Intersect_gene' %in% colnames(res)){
-      text(x = fdr,y=tmp, res$Intersect_gene, pos=4)
-    }
+    text(x = fdr,y=tmp, res$GOID, pos=4)
     abline(v=-log10(fdr), lty=2)
   }
 }
