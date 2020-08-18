@@ -1,3 +1,6 @@
+seq2pathway 1.16.0: 
+- update python2.7 to python3
+
 seq2pathway 1.15.0: 
 - Added function plotTop10
 
