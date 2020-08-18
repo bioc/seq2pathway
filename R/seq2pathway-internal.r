@@ -948,7 +948,9 @@ runseq2gene <-
     mypython <- Sys.which("python3")
     if (length(grep("python3", mypython))==0 )
         {
-         Sys.setenv(PATH=paste("C:\\Python3;",Sys.getenv("PATH"),sep=""))
+	 #Sys.setenv(PATH=paste("C:\\Python;",Sys.getenv("PATH"),sep="")) ## This works for Python2.7 on Windows
+	 Windows.path3 = paste0('C:\\Users\\',Sys.getenv('USERNAME'),'\\AppData\\Local\\Programs\\Python\\Python38')
+         Sys.setenv(PATH=paste(Windows.path3,";",Sys.getenv("PATH"),sep=""))
          mypython <- Sys.which("python3")
          warning(
 "Python3 not found! Python3 needs to be in the PATH variable, which you can set by doing:","\n\n",
@@ -962,13 +964,13 @@ runseq2gene <-
 "\" and press Enter.","\n",
 "Note: /usr/local/bin/python3 is the path of the Python3 directory ","\n",
 "Setting path at Windows","\n",
-"To add the Python directory to the path for a particular session in Windows:","\n",
+"For example,  to add the Python3.8 directory to the path for a particular session in Windows:","\n",
 "\t","At the command prompt: type","\n",
-"\t","path %path%;C:\\Python3 and press Enter. ","\n",
-"Note: C:\\Python3 is the path of the by default Python directory ","\n\n",
+"\t","path %path%; C:\\Users\\<USERNAME>\\AppData\\Local\\Programs\\Python\\Python38 and press Enter. ","\n",
+"Note: paste0('C:\\Users\\',Sys.getenv('USERNAME'),'\\AppData\\Local\\Programs\\Python\\Python38') is the path of the by default Python3 directory ","\n\n",
 "If a Windows user and failed here, ",
 "pls add the Python directory to the path for a particular session in Windows!","\n",
-"If a Windows user and get results here, C:\\Python3 is where you Python3 located","\n"
+"If a Windows user and get results here, C:\\Users\\<USERNAME>\\AppData\\Local\\Programs\\Python\\Python38 is where you Python3.8 located","\n"
 )
 
          } 
