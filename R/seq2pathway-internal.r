@@ -945,30 +945,30 @@ runseq2gene <-
 		stop ("The python command hasn't been generated correctly!")} 
     
     #invoke python
-    mypython <- Sys.which("python")
-    if (length(grep("python", mypython))==0 )
+    mypython <- Sys.which("python3")
+    if (length(grep("python3", mypython))==0 )
         {
-         Sys.setenv(PATH=paste("C:\\Python27;",Sys.getenv("PATH"),sep=""))
-         mypython <- Sys.which("python")
+         Sys.setenv(PATH=paste("C:\\Python3;",Sys.getenv("PATH"),sep=""))
+         mypython <- Sys.which("python3")
          warning(
-"Python not found! Python needs to be in the PATH variable, which you can set by doing:","\n\n",
+"Python3 not found! Python3 needs to be in the PATH variable, which you can set by doing:","\n\n",
 "Setting path at Unix/Linux","\n",
-"To add the Python directory to the path for a particular session in Unix:","\n",
-"\t","In the csh shell: type setenv PATH \"",as.character("$PATH:/usr/local/bin/python"),
+"To add the Python3 directory to the path for a particular session in Unix:","\n",
+"\t","In the csh shell: type setenv PATH \"",as.character("$PATH:/usr/local/bin/python3"),
 "\" and press Enter.","\n",
-"\t","In the bash shell (Linux): type export PATH=\"",as.character("$PATH:/usr/local/bin/python"),
+"\t","In the bash shell (Linux): type export PATH=\"",as.character("$PATH:/usr/local/bin/python3"),
 "\" and press Enter.","\n",
-"\t","In the sh or ksh shell: type PATH=\"",as.character("$PATH:/usr/local/bin/python"),
+"\t","In the sh or ksh shell: type PATH=\"",as.character("$PATH:/usr/local/bin/python3"),
 "\" and press Enter.","\n",
-"Note: /usr/local/bin/python is the path of the Python directory ","\n",
+"Note: /usr/local/bin/python3 is the path of the Python3 directory ","\n",
 "Setting path at Windows","\n",
 "To add the Python directory to the path for a particular session in Windows:","\n",
 "\t","At the command prompt: type","\n",
-"\t","path %path%;C:\\Python27 and press Enter. ","\n",
-"Note: C:\\Python27 is the path of the by default Python directory ","\n\n",
+"\t","path %path%;C:\\Python3 and press Enter. ","\n",
+"Note: C:\\Python3 is the path of the by default Python directory ","\n\n",
 "If a Windows user and failed here, ",
 "pls add the Python directory to the path for a particular session in Windows!","\n",
-"If a Windows user and get results here, C:\\Python27 is where you Python located","\n"
+"If a Windows user and get results here, C:\\Python3 is where you Python3 located","\n"
 )
 
          } 
