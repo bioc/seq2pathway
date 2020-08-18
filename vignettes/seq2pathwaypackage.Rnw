@@ -434,7 +434,7 @@ The most critical issue in functionally interpreting genomic loci is to bridge n
   \subsection{ChIP-seq data analysis}
 %------------------------------------
     \subsubsection{Map ChIP-seq enriched peaks to genes using \texttt{runseq2gene}}
-    \texttt{runseq2gene()} is one of the key functions in the seq2pathway package. The \texttt{runseq2gene} links sequence-level measurements of genomic regions (including ChIP-seq peaks, SNPs or point mutation coordinates) to gene-level scores. The function has the option to assign non-exon regions to a broader range of neighboring genes than the nearest one, thus facilitating the study of functional non-coding elements. Currently, Seq2pathway only works in Linux or windows with python2.7 environment, as it has wrapped python scripts to annotate loci to genes.  \\
+    \texttt{runseq2gene()} is one of the key functions in the seq2pathway package. The \texttt{runseq2gene} links sequence-level measurements of genomic regions (including ChIP-seq peaks, SNPs or point mutation coordinates) to gene-level scores. The function has the option to assign non-exon regions to a broader range of neighboring genes than the nearest one, thus facilitating the study of functional non-coding elements. Currently, Seq2pathway only works in Linux or windows with python3.8 environment, as it has wrapped python scripts to annotate loci to genes.  \\
     To execute runseq2gene, we need to assign input file. An example of inputfile, Chipseq\_Peak\_demo, is included in the package. 
 <<Chipseq_Peak_demo>>=
 data(Chipseq_Peak_demo)
