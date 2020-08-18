@@ -81,7 +81,9 @@
 \section{Package Installation}
 %--------------------------------------------
 
-Currently, \texttt{seq2pathway}  works in both \texttt{Linux} and \texttt{Windows}. It has wrapped python scripts to annotate loci to genes, thus requires Python v2.7 running on the system. For Windows, the Python should be installed at ``C:/python27/python'' (default). Make sure supporting data package \texttt{seq2pathway.data} is installed with \texttt{seq2pathway} package. 
+Currently, \texttt{seq2pathway}  works in both \texttt{Linux} and \texttt{Windows}. It has wrapped python scripts to annotate loci to genes, thus requires Python v3.8 running on the system. 
+For Windows, the Python should be installed at ``C:\Users\<USERNAME>\AppData\Local\Programs\Python\Python38'' (default). Make sure you click 'add python to PATH' when installing.
+Make sure supporting data package \texttt{seq2pathway.data} is installed with \texttt{seq2pathway} package. 
 
 If you don't have BiocManager::install() you can get it like this:
 
