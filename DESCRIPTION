@@ -5,7 +5,7 @@ Title: a novel tool for functional gene-set (or termed as pathway)
 Version: 2.0.0
 Date: 2020-08-18
 Author: Xinan Yang <xyang2@uchicago.edu>; Bin Wang <binw@uchicago.edu>
-Maintainer: Xinan Yang <xyang2@uchicago.edu> with contribution from Jennifer Sun <ysunn98@gmail.com> and Zhezhen Wang <zhezhen@uchicago.edu>
+Maintainer: Xinan Yang <xyang2@uchicago.edu> with contribution from Jennifer Sun <ysunn98@gmail.com>
 Depends: R (>= 2.10.0)
 biocViews: Software
 Imports: nnet, WGCNA, GSA, biomaRt, GenomicRanges, seq2pathway.data
