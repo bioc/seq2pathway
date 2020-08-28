@@ -915,10 +915,10 @@ runseq2gene <-
     cat("",sep="\n")
     ###import our function module
     cat("import imp",sep="\n")
-    cat("imp.load_source('Function_PeakMutationAnnotation_GENCODE_05182015',")
+    cat("imp.load_source('Function_PeakMutationAnnotation_GENCODE_08182020',")
     cat("'", path, "')",sep="")
     cat("",sep="\n")
-    cat("from Function_PeakMutationAnnotation_GENCODE_05182015 import FindPeakMutation",sep="\n")
+    cat("from Function_PeakMutationAnnotation_GENCODE_08182020 import FindPeakMutation",sep="\n")
     cat("",sep="\n")
     
     ####write parameters
