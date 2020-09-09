@@ -914,7 +914,7 @@ runseq2gene <-
     cat("from bisect import *",sep="\n")
     cat("",sep="\n")
     ###import our function module
-    cat("import imp",sep="\n")
+    cat("import importlib",sep="\n") ## update from import imp at 8092020
     cat("imp.load_source('Function_PeakMutationAnnotation_GENCODE_08182020',")
     cat("'", path, "')",sep="")
     cat("",sep="\n")
