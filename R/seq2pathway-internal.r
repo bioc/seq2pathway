@@ -868,7 +868,7 @@ runseq2gene <-
     
     ### assign the path of main function
     path<-paste(system.file(package="seq2pathway"),
-#		"/scripts/Function_PeakMutationAnnotation_GENCODE_05182015.py",sep="/") # This script works for Python 2.7
+#####		"/scripts/Function_PeakMutationAnnotation_GENCODE_05182015.py",sep="/") # This script works for Python 2.7
 		"/scripts/Function_PeakMutationAnnotation_GENCODE_08182020.py",sep="/") # This script works for Python 3.8
     
     ## decide the platform
