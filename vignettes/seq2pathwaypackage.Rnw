@@ -96,6 +96,7 @@ BiocManager::install("seq2pathway")
 
 Now install seq2pathway and the data package:
 <<setup>>=
+install.packages("seq2pathway",repos = "http://cran.us.r-project.org")
 library("seq2pathway.data") 
 library("seq2pathway") 
 @   

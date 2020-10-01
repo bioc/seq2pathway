@@ -867,7 +867,7 @@ runseq2gene <-
     if(length(genome>1)){genome=genome[1]}
     
     ### assign the path of main function
-    path<-paste(system.file(package="seq2pathway"),
+    path <-paste(system.file(package="seq2pathway"),
 #####		"/scripts/Function_PeakMutationAnnotation_GENCODE_05182015.py",sep="/") # This script works for Python 2.7
 		"/scripts/Function_PeakMutationAnnotation_GENCODE_08182020.py",sep="/") # This script works for Python 3.8
     
@@ -906,7 +906,7 @@ runseq2gene <-
     tmp_ref_file = gsub("\\","/",tmp_ref_file,fixed =TRUE)
     
     if (mySys=="W") sink(paste(tempdir(),"\\",name,sep="")) else {
-		sink(file.path(tempdir(),name,fsep = .Platform$file.sep))}
+		sink(file.path(tempdir(),name,fsep = .Platform$file.sep))} 
     ###fixed headers import modules
     cat("import sys, string, math, shutil, math, os, gzip, time, glob, multiprocessing",sep="\n")
     cat("from shutil import rmtree",sep="\n")
@@ -914,9 +914,11 @@ runseq2gene <-
     cat("from bisect import *",sep="\n")
     cat("",sep="\n")
     ###import our function module
-    cat("import importlib",sep="\n") ## update from import imp at 8092020
-    cat("imp.load_source('Function_PeakMutationAnnotation_GENCODE_08182020',")
-    cat("'", path, "')",sep="")
+    ##cat("import importlib",sep="\n") ## update from import imp at 8092020 t0 import importlib
+    cat("from importlib.machinery import SourceFileLoader", sep="\n")
+    ##cat("imp.load_source('Function_PeakMutationAnnotation_GENCODE_08182020',")
+    cat("SourceFileLoader('Function_PeakMutationAnnotation_GENCODE_08182020',")
+    cat("'", path, "').load_module()",sep="")
     cat("",sep="\n")
     cat("from Function_PeakMutationAnnotation_GENCODE_08182020 import FindPeakMutation",sep="\n")
     cat("",sep="\n")
