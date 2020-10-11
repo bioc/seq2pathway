@@ -825,6 +825,40 @@ return(res_p)
 
 }
 
+#Sys.which2: funtion from Herve Pages, Bioconductor Maintainance Team, Oct 9 2020
+### A version of Sys.which() that is guaranteed to return "" when the
+### command is not found (Sys.which() does not guarantee that).
+Sys.which2 <- function(cmdname)
+{
+  stopifnot(length(cmdname) == 1L)
+  cmdpath <- Sys.which(cmdname)
+  ## Unfortunately we can't rely on .Platform$file.sep (it's broken on
+  ## some Windows versions) so we try with both, a forward slash and a
+  ## backward slash.
+  pattern1 <- paste0("/", cmdname)
+  pattern2 <- paste0("\\", cmdname)
+  success <- grepl(pattern1, cmdpath, fixed=TRUE) ||
+    grepl(pattern2, cmdpath, fixed=TRUE)
+  if (success) cmdpath else ""
+}
+
+#get_python3_command_path: funtion from Herve Pages, Bioconductor Maintainance Team, Oct 9 2020
+### First try 'python3', then try 'python'.
+get_python3_command_path <- function()
+{
+  python3_command_path <- Sys.which2("python3")
+  if (python3_command_path != "")
+    return(python3_command_path)
+  ## On some systems (e.g. Windows) the name of the Python 3 command
+  ## might be 'python', not 'python3'.
+  python3_command_path <- Sys.which2("python")
+  if (python3_command_path != "")
+    return(python3_command_path)
+  stop("Couldn't find command 'python3' (or 'python') on your system.\n",
+       "  If Python 3 is installed on your system, make sure that the\n",
+       "  'python3' (or 'python') executable is in your PATH.")
+}
+
 #function 14
 runseq2gene <-
     function(inputfile,search_radius=150000,promoter_radius=200,
@@ -944,49 +978,17 @@ runseq2gene <-
 		search_radius,promoter_radius,promoter_radius2,genome,adjacent,
 		pwd,SNP,PromoterStop,NearestTwoDirection,UTR3)")
     sink()
-    if(!file.exists(file.path(tempdir(),name))) {
-		stop ("The python command hasn't been generated correctly!")} 
     
-    #invoke python
-    mypython <- Sys.which("python3")
-    if (length(grep("python3", mypython))==0 )
-        {
-	 #Sys.setenv(PATH=paste("C:\\Python;",Sys.getenv("PATH"),sep="")) ## This works for Python2.7 on Windows
-	 Windows.path3 = paste0('C:\\Users\\',Sys.getenv('USERNAME'),'\\AppData\\Local\\Programs\\Python\\Python38')
-         Sys.setenv(PATH=paste(Windows.path3,";",Sys.getenv("PATH"),sep=""))
-         mypython <- Sys.which("python3")
-         warning(
-"Python3 not found! Python3 needs to be in the PATH variable, which you can set by doing:","\n\n",
-"Setting path at Unix/Linux","\n",
-"To add the Python3 directory to the path for a particular session in Unix:","\n",
-"\t","In the csh shell: type setenv PATH \"",as.character("$PATH:/usr/local/bin/python3"),
-"\" and press Enter.","\n",
-"\t","In the bash shell (Linux): type export PATH=\"",as.character("$PATH:/usr/local/bin/python3"),
-"\" and press Enter.","\n",
-"\t","In the sh or ksh shell: type PATH=\"",as.character("$PATH:/usr/local/bin/python3"),
-"\" and press Enter.","\n",
-"Note: /usr/local/bin/python3 is the path of the Python3 directory ","\n",
-"Setting path at Windows","\n",
-"For example,  to add the Python3.8 directory to the path for a particular session in Windows:","\n",
-"\t","At the command prompt: type","\n",
-"\t","path %path%; C:\\Users\\<USERNAME>\\AppData\\Local\\Programs\\Python\\Python38 and press Enter. ","\n",
-"Note: paste0('C:\\Users\\',Sys.getenv('USERNAME'),'\\AppData\\Local\\Programs\\Python\\Python38') is the path of the by default Python3 directory ","\n\n",
-"If a Windows user and failed here, ",
-"pls add the Python directory to the path for a particular session in Windows!","\n",
-"If a Windows user and get results here, C:\\Users\\<USERNAME>\\AppData\\Local\\Programs\\Python\\Python38 is where you Python3.8 located","\n"
-)
-
-         } 
-         
-    command <- paste0(mypython," ",tempdir(),"/",name) 
-    # command <- paste("C:/Python27/python ", tempdir(),"\\",name,sep="")   # old version only works on Windows, not to use
-    #if (mySys=="L")  {
-    #     command <- file.path(mypython," ",tempdir(),"/", name,fsep = "")  # for Linux/Mac
-    #             } else {
-    #    command <- paste(mypython," ",tempdir(),"\\",name, sep="")     # for Windows
-    #                     }
-    # cat(command, "\n")             
-    response <- system(command, intern=TRUE)
+    # from Herve Pages, Bioconductor Maintainance Group, Oct 9 2020
+    script_path <- file.path(tempdir(), name)
+    if (!file.exists(script_path))
+      stop("the python script hasn't been generated correctly")
+    mypython <- get_python3_command_path()
+    ## system2() is recommended over system().
+    response <- system2(mypython, args=script_path,
+                        stdout=TRUE, stderr=TRUE)
+    # end
+    
     anno_result<-read.table(file=tmpoutfile_UTR3,header=TRUE,sep="\t")
     seq2gene_result=list()
     seq2gene_result[[1]]<-anno_result
