@@ -1,3 +1,4 @@
+### AJ EDITS SO THIS WORKS IN 2021
 ###ADD UTR3 
 ###Add parameter: output nearest one or two from two directions
 ###Add hg38
@@ -6,14 +7,14 @@
 ###Add stop at intron(adjacent)
 ###only nearest one if peak is not located in bidirectional region, instead of nearest left and right
 from bisect import *
-import ast, math, sys, string, math, shutil, os, gzip, time, glob, multiprocessing
+import ast, math, sys, string, math, shutil, os, gzip, time, glob, multiprocessing, functools
 from datetime import datetime
 from shutil import rmtree
 
 
 def FindPeakMutation(inputfile,outputfile,outputfileUTR3,tmp_ref_file,search_radius,promoter_radius,promoter_radius2,genome,adjacent,pwd,SNP,PromoterStop,NearestTwoDirection,UTR3):
-   print 'python process start:', datetime.now()
-   print 'Load Reference'
+   print('python process start:', datetime.now())
+   print('Load Reference')
    #######################################################
    #update 05182015, reverse strand of reference gtf for UTR3
    fout_reftmp = open(tmp_ref_file, 'w')
@@ -25,7 +26,7 @@ def FindPeakMutation(inputfile,outputfile,outputfileUTR3,tmp_ref_file,search_rad
          line[6] = '+'
       else:
          line[6] = '.'
-      for i in xrange(0,(len(line)-1)):
+      for i in range(0,(len(line)-1)):
          fout_reftmp.write(line[i] + '\t')
       fout_reftmp.write(line[(len(line)-1)] + '\n')
    fout_reftmp.close()
@@ -77,7 +78,7 @@ def FindPeakMutation(inputfile,outputfile,outputfileUTR3,tmp_ref_file,search_rad
       chromo, source, TSS, TTS, strand = record[0], record[1], record[3], record[4], record[6]
       gene_name = record[8].strip().split(';')[1].strip().split(' ')[1][1:-1]
       transcript_id = record[8].strip().split(';')[0].strip().split(' ')[1][1:-1]
-      gnote = reduce(lambda x, y: x + '\t' + y, [chromo, TSS, TTS, strand, gene_name, source, transcript_id])
+      gnote = functools.reduce(lambda x, y: x + '\t' + y, [chromo, TSS, TTS, strand, gene_name, source, transcript_id])
       return (peak + '\t' + str(n - m) + '\t' + str(distance) + '\t' + comment + '\t' + gnote)
    
    ######load exon, intron, geneid index information
@@ -109,14 +110,14 @@ def FindPeakMutation(inputfile,outputfile,outputfileUTR3,tmp_ref_file,search_rad
    #index gemeid_set
    genemap=dict()
    geneset=set()
-   for i in xrange(len(geneid_set)):
+   for i in range(len(geneid_set)):
       key=geneid_set[i][1]
       genemap[key] = geneid_set[i][0]
       geneset.add(key)
    
 
 
-   print 'Check Reference files'
+   print('Check Reference files')
 
    '''
    PURPOSE
@@ -167,7 +168,7 @@ def FindPeakMutation(inputfile,outputfile,outputfileUTR3,tmp_ref_file,search_rad
       TRANSCRIPTRight.append([])
       TRANSCRIPTRightID.append([])
 
-      for i in xrange(len(transcript)):
+      for i in range(len(transcript)):
          TRANSCRIPTRightSort[-1].append( (int(transcript[i][4]), i) )
 
       TRANSCRIPTRightSort[-1].sort(key = lambda x: x[0])
@@ -203,7 +204,7 @@ def FindPeakMutation(inputfile,outputfile,outputfileUTR3,tmp_ref_file,search_rad
       PCBEGINKEY.append([])
       PCLINEID.append([])
 
-      for i in xrange(len(transcript)):
+      for i in range(len(transcript)):
          record = transcript[i]
 
          # Append to gene list.
@@ -236,10 +237,10 @@ def FindPeakMutation(inputfile,outputfile,outputfileUTR3,tmp_ref_file,search_rad
       (3) Find nearest protein coding;
       (4) Find neighbors within a range.
    '''
-   print 'fixed reference done:', datetime.now()
+   print('fixed reference done:', datetime.now())
 
    fout = open(outputfile,'w')
-   print 'Start Annotation'
+   print('Start Annotation')
 
    count = -1
    for line in open(inputfile, 'r'):
@@ -271,15 +272,15 @@ def FindPeakMutation(inputfile,outputfile,outputfileUTR3,tmp_ref_file,search_rad
       peakRight = n
 
       # The information about the peak to be printed.
-      pkhd = reduce(lambda x, y: x + '\t' + y, line[0:4])
+      pkhd = functools.reduce(lambda x, y: x + '\t' + y, line[0:4])
 
       # ---------------------------------------
       # Annotate exon;intron
-      # ---------------------------------------
+      # --------------------------------------
 
       # Check if the chromosome has been registered.
       if pkchrm not in transcript_chrm:
-         print pkchrm, 'Chromosome not registered'
+         print(pkchrm, 'Chromosome not registered')
          continue
       else:
          ichrm = transcript_chrm[ pkchrm ]
@@ -295,7 +296,7 @@ def FindPeakMutation(inputfile,outputfile,outputfileUTR3,tmp_ref_file,search_rad
       iMin = bisect_left(transcriptRight, peakLeft)
 
       setRight = set()
-      for i in xrange(iMin, len(transcriptRight)):
+      for i in range(iMin, len(transcriptRight)):
          setRight.add(transcriptRightID[i]) 
 
       iMax = bisect_right(transcriptLeft, peakRight, lo=iMin+1)
@@ -316,7 +317,7 @@ def FindPeakMutation(inputfile,outputfile,outputfileUTR3,tmp_ref_file,search_rad
          else: 
             geneid_B=transcript[transcriptID][8].strip().split(';')[0][9:-1]            
             if len(exonband[genemap[geneid_B]])>0:
-               for i in xrange(len(exonband[genemap[geneid_B]])):
+               for i in range(len(exonband[genemap[geneid_B]])):
                   exona=exonband[genemap[geneid_B]][i][0]
                   exonb=exonband[genemap[geneid_B]][i][1]
                   if n < exona or m > exonb:
@@ -339,7 +340,7 @@ def FindPeakMutation(inputfile,outputfile,outputfileUTR3,tmp_ref_file,search_rad
             else:
                geneid_B=transcript[transcriptID][8].strip().split(';')[0][9:-1]
                if len(intronband[genemap[geneid_B]])>0:
-                  for i in xrange(len(intronband[genemap[geneid_B]])):
+                  for i in range(len(intronband[genemap[geneid_B]])):
                      introna=intronband[genemap[geneid_B]][i][0]
                      intronb=intronband[genemap[geneid_B]][i][1]
                      if n < introna or m > intronb:
@@ -362,7 +363,7 @@ def FindPeakMutation(inputfile,outputfile,outputfileUTR3,tmp_ref_file,search_rad
             else:
                geneid_B=transcript[transcriptID][8].strip().split(';')[0][9:-1]
                if len(cdsband[genemap[geneid_B]])>0:
-                  for i in xrange(len(cdsband[genemap[geneid_B]])):
+                  for i in range(len(cdsband[genemap[geneid_B]])):
                      cdsa=cdsband[genemap[geneid_B]][i][0]
                      cdsb=cdsband[genemap[geneid_B]][i][1]
                      if n < cdsa or m > cdsb:
@@ -380,7 +381,7 @@ def FindPeakMutation(inputfile,outputfile,outputfileUTR3,tmp_ref_file,search_rad
             else:
                geneid_B=transcript[transcriptID][8].strip().split(';')[0][9:-1]
                if len(utrband[genemap[geneid_B]])>0:
-                  for i in xrange(len(utrband[genemap[geneid_B]])):
+                  for i in range(len(utrband[genemap[geneid_B]])):
                      utra=utrband[genemap[geneid_B]][i][0]
                      utrb=utrband[genemap[geneid_B]][i][1]
                      if n < utra or m > utrb:
@@ -650,7 +651,7 @@ def FindPeakMutation(inputfile,outputfile,outputfileUTR3,tmp_ref_file,search_rad
       lower_id = bisect(tsbeginkey, lower_bound)
       upper_id = bisect(tsbeginkey, upper_bound, lo = lower_id)
 
-      for key_id in xrange(lower_id, upper_id):
+      for key_id in range(lower_id, upper_id):
          line_id = tslineid[key_id]
          if line_id not in myNeighbor:
             distance = middle - tsbeginkey[key_id]
@@ -679,14 +680,14 @@ def FindPeakMutation(inputfile,outputfile,outputfileUTR3,tmp_ref_file,search_rad
                line[11] = '+'
             else:
                line[11] = '.'
-            for i in xrange(0,(len(line)-1)):
+            for i in range(0,(len(line)-1)):
                fout_utr.write(line[i] + '\t')
             fout_utr.write(line[(len(line)-1)] + '\n')            
    fout_utr.close()   
    ####
 
-   print 'Finish Annotation'
-   print 'python process end:', datetime.now()
+   print('Finish Annotation')
+   print('python process end:', datetime.now())
 
 
 

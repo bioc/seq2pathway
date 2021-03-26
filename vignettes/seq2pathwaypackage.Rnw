@@ -59,7 +59,7 @@
 %------------------------------------------------------------
 \title{seq2pathway Vignette}
 %------------------------------------------------------------
-\author{Bin Wang, Xinan (Holly) Yang}
+\author{Bin Wang, Xinan Holly Yang, Arjun Kinstlick}
 %\date{}
 
 \SweaveOpts{highlight=TRUE, tidy=TRUE, keep.space=TRUE, keep.blank.space=FALSE, keep.comment=TRUE}
@@ -445,7 +445,7 @@ head(Chipseq_Peak_demo)
 <<runseq2gene>>=
 Chipseq_anno <- runseq2gene(
                   inputfile=Chipseq_Peak_demo, 
-                  genome="hg38", adjacent=FALSE, SNP=FALSE, search_radius=1000, 
+                  genome="hg19", adjacent=FALSE, SNP=FALSE, search_radius=1000, 
                   PromoterStop=FALSE,NearestTwoDirection=TRUE)
 class(Chipseq_anno)
 head(Chipseq_anno[[1]])
@@ -468,17 +468,17 @@ head(dat_chip)
 
     \begin{verbatim}
 > result_FAIME<-gene2pathway_test(dat= dat_chip, DataBase= MsigDB_C5, 
-                FisherTest=TRUE, EmpiricalTest=TRUE, method="FAIME", 
+                FisherTest=TRUE, EmpiricalTest=FALSE, method="FAIME", 
                 alpha=5, logCheckALSE,  na.rm=FALSE)
     \end{verbatim}
     The \texttt{output} will be a list, which include two data frame. One data set is the result of Fisher's exact test, with the geneset from MSigDB\cite{Liberzon11}, the other is the result of \texttt{rungene2pathway} function with method ``FAIME''. We calculated empirical p-values for a single sample. \\
     \newline
     \#Example2: \\
-    \underline{Running FAIME and FET against GO defined gene-sets with empirical p-values}
+    \underline{Running FAIME and FET against GO defined gene-sets with empirical p-values. For a true test, B must be at least 100. For demo purposes, we set B = 2.}
     \begin{verbatim}
 > result_FAIME<-gene2pathway_test(dat= dat_chip, 
                 FisherTest=TRUE, EmpiricalTest=TRUE, method="FAIME", 
-                alpha=5, logCheck=FALSE, na.rm=FALSE)
+                alpha=5, logCheck=FALSE, na.rm=FALSE, B=2)
     \end{verbatim}
     In our package, there is an R resultant object \texttt{dat\_gene2path\_chip} as demo of \texttt{result\_FAIME}. 
 
@@ -500,14 +500,14 @@ dat_gene2path_chip$gene2pathway_result.FET$GO_BP[1:3,-2]
     \#Example 3: \\
     \underline{Running FAIME and FET against GO defined gene-sets without empirical p-values}
     \begin{verbatim}
-> result_FAIME<-gene2pathway_test(dat= dat_chip, FisherTest=TRUE, EmpiricalTestALSE,
+> result_FAIME<-gene2pathway_test(dat= dat_chip, FisherTest=TRUE, EmpiricalTest=FALSE,
                 method="FAIME", alpha=5, logCheck=FALSE, na.rm=FALSE)
     \end{verbatim}
     \#Example 4: \\
-    \underline{Running FAIME only against GO defined gene-sets with empirical p-values}
+    \underline{Running FAIME only against GO defined gene-sets with empirical p-values. For a true test, B must be at least 100. For demo purposes, we set B = 2.}
     \begin{verbatim}
 > result_FAIME<-gene2pathway_test(dat= dat_chip, FisherTest=FALSE,EmpiricalTest=TRUE,
-                method="FAIME", alpha=5, logCheck=FALSE, na.rm=FALSE)
+                method="FAIME", alpha=5, logCheck=FALSE, na.rm=FALSE, B=2)
     \end{verbatim} 
 
     \subsubsection{Discover enriched GO terms using Fisher's Exact test without gene scores}
@@ -713,7 +713,7 @@ The function addDescription is wrapped from R package ``biomaRt'' \cite{Durinck0
           A data frame with two columns, first is the input genelist and second is the biomaRt gene description in details. 
           \item An example:
           \begin{verbatim}
-> gene_description<-addDescription(genome="hg19",genevector=as.vector(rownames(dat_chip)))
+> gene_description<-addDescription(genome="hg38",genevector=as.vector(rownames(dat_chip)))
 > head(gene_description)
           \end{verbatim}
           

@@ -7,9 +7,11 @@ from __future__ import division
 ###V2: USE GENCODEhg19 or mm10, mm9 as reference
 ###Add stop at intron(adjacent)
 ###only nearest one if peak is not located in bidirectional region, instead of nearest left and right
+###Last updated 1/14/2021 by AJ Kinstlick
 from builtins import str
 from builtins import range
-from past.utils import old_div
+#AJ comment
+#from past.utils import old_div
 from bisect import *
 import ast, math, sys, string, math, shutil, os, gzip, time, glob, multiprocessing
 from datetime import datetime
@@ -81,8 +83,8 @@ def FindPeakMutation(inputfile,outputfile,outputfileUTR3,tmp_ref_file,search_rad
    
    def out_string_v2(peak, distance, record, comment):
       chromo, source, TSS, TTS, strand = record[0], record[1], record[3], record[4], record[6]
-      gene_name = record[8].strip().split(';')[1].strip().split(' ')[1][1:-1]
-      transcript_id = record[8].strip().split(';')[0].strip().split(' ')[1][1:-1]
+      gene_name = record[8].strip().split(';')[1].strip()[10:]
+      transcript_id = record[8].strip().split(';')[0].strip()[8:]
       gnote = reduce(lambda x, y: x + '\t' + y, [chromo, TSS, TTS, strand, gene_name, source, transcript_id])
       return (peak + '\t' + str(n - m) + '\t' + str(distance) + '\t' + comment + '\t' + gnote)
    
@@ -92,23 +94,27 @@ def FindPeakMutation(inputfile,outputfile,outputfileUTR3,tmp_ref_file,search_rad
    intronband =[]
    cdsband =[]
    utrband =[]
-   for line in open(pwd + r'/GENCODE_' + genome + '_EXONinfo.txt','r'):
+   #aj debugging
+   lindex = 0
+   for line in open(pwd + r'GENCODE_' + genome + '_EXONinfo.txt','r'):
       line = ast.literal_eval(line.strip().split('\t')[1])
       exonband.append(line)
    
-   for line in open(pwd + r'/GENCODE_' + genome + '_INTRONinfo.txt','r'):
+   for line in open(pwd + r'GENCODE_' + genome + '_INTRONinfo.txt','r'):
       line = ast.literal_eval(line.strip().split('\t')[1])
       intronband.append(line)
       
-   for line in open(pwd + r'/GENCODE_' + genome + '_CDSinfo.txt','r'):
+   for line in open(pwd + r'GENCODE_' + genome + '_CDSinfo.txt','r'):
       line = ast.literal_eval(line.strip().split('\t')[1])
       cdsband.append(line)
 
-   for line in open(pwd + r'/GENCODE_' + genome + '_UTRinfo.txt','r'):
+   for line in open(pwd + r'GENCODE_' + genome + '_UTRinfo.txt','r'):
       line = ast.literal_eval(line.strip().split('\t')[1])
+      if(lindex < 15):
+         lindex += 1
       utrband.append(line)
       
-   for line in open(pwd + r'/GENCODE_' + genome + '_GENEID_index.txt','r'):
+   for line in open(pwd + r'GENCODE_' + genome + '_GENEID_index.txt','r'):
       line = ast.literal_eval(line.strip().split('\t')[0])
       geneid_set.append(line)
 
@@ -248,6 +254,9 @@ def FindPeakMutation(inputfile,outputfile,outputfileUTR3,tmp_ref_file,search_rad
    print('Start Annotation')
 
    count = -1
+   #AJ debugging
+   #print("starting to open inputfile")
+   #
    for line in open(inputfile, 'r'):
 
       # Neglect the comment line.
@@ -272,7 +281,10 @@ def FindPeakMutation(inputfile,outputfile,outputfileUTR3,tmp_ref_file,search_rad
       if pkchrm[0:3].upper() == 'CHR':
          pkchrm = pkchrm[3:]
       m, n = int(line[2]), int(line[3])
-      middle = old_div((m + n), 2)
+      #AJ changes
+      #middle = old_div((m + n), 2)
+      middle = (m+n)/2
+      #
       peakLeft  = m
       peakRight = n
 
@@ -320,7 +332,7 @@ def FindPeakMutation(inputfile,outputfile,outputfileUTR3,tmp_ref_file,search_rad
          if n < a or m > b:
             continue
          else: 
-            geneid_B=transcript[transcriptID][8].strip().split(';')[0][9:-1]            
+            geneid_B=transcript[transcriptID][8].strip().split(';')[0][8:]
             if len(exonband[genemap[geneid_B]])>0:
                for i in range(len(exonband[genemap[geneid_B]])):
                   exona=exonband[genemap[geneid_B]][i][0]
@@ -343,7 +355,7 @@ def FindPeakMutation(inputfile,outputfile,outputfileUTR3,tmp_ref_file,search_rad
             if n < a or m > b:
                continue
             else:
-               geneid_B=transcript[transcriptID][8].strip().split(';')[0][9:-1]
+               geneid_B=transcript[transcriptID][8].strip().split(';')[0][8:]
                if len(intronband[genemap[geneid_B]])>0:
                   for i in range(len(intronband[genemap[geneid_B]])):
                      introna=intronband[genemap[geneid_B]][i][0]
@@ -366,7 +378,7 @@ def FindPeakMutation(inputfile,outputfile,outputfileUTR3,tmp_ref_file,search_rad
             if n < a or m > b:
                continue
             else:
-               geneid_B=transcript[transcriptID][8].strip().split(';')[0][9:-1]
+               geneid_B=transcript[transcriptID][8].strip().split(';')[0][8:]
                if len(cdsband[genemap[geneid_B]])>0:
                   for i in range(len(cdsband[genemap[geneid_B]])):
                      cdsa=cdsband[genemap[geneid_B]][i][0]
@@ -384,7 +396,7 @@ def FindPeakMutation(inputfile,outputfile,outputfileUTR3,tmp_ref_file,search_rad
             if n < a or m > b:
                continue
             else:
-               geneid_B=transcript[transcriptID][8].strip().split(';')[0][9:-1]
+               geneid_B=transcript[transcriptID][8].strip().split(';')[0][8:]
                if len(utrband[genemap[geneid_B]])>0:
                   for i in range(len(utrband[genemap[geneid_B]])):
                      utra=utrband[genemap[geneid_B]][i][0]

@@ -1,7 +1,8 @@
 #function 1
 addDescription <-
-function(genome=c("hg19", "mm10", "mm9"),genevector){
-if(missing(genome)){stop("Error: Please input genome type: 'mm10', 'mm9', or 'hg19'")}
+function(genome=c("hg38","hg19", "mm10", "mm9"),genevector){
+  require(biomaRt)
+if(missing(genome)){stop("Error: Please input genome type: 'mm10', 'mm9', 'hg38', or 'hg19'")}
 if(genome == "mm10"){
    ensembl = useMart("ensembl",dataset="mmusculus_gene_ensembl")
    anno <- getBM(attributes=c("mgi_symbol", "mgi_description"), filters = "mgi_symbol", 
@@ -16,15 +17,23 @@ if(genome == "mm10"){
 		mart = ensembl)
    anno <- anno[match(genevector, anno$mgi_symbol),]
    anno<-anno[is.na(anno$mgi_symbol)==FALSE,]
-   }else if(genome == "hg19"){
+   }else if(genome == "hg38"){
    ensembl = useMart("ensembl",dataset="hsapiens_gene_ensembl")
    anno <- getBM(attributes=c("hgnc_symbol", "description"), 
 		filters = "hgnc_symbol", values = as.vector(genevector), 
 		mart = ensembl)
    anno <- anno[match(genevector, anno$hgnc_symbol),]
    anno<-anno[is.na(anno$hgnc_symbol)==FALSE,]
-   }else{
-   stop("Error: Please input genome type: 'mm10', 'mm9', or 'hg19'")
+   }else if(genome == "hg19") {
+     ensembl = useMart(biomart="ensembl", host="grch37.ensembl.org", 
+                       dataset="hsapiens_gene_ensembl")
+     anno <- getBM(attributes=c("hgnc_symbol", "description"), 
+                   filters = "hgnc_symbol", values = as.vector(genevector), 
+                   mart = ensembl)
+     anno <- anno[match(genevector, anno$hgnc_symbol),]
+     anno<-anno[is.na(anno$hgnc_symbol)==FALSE,]
+   } else{
+   stop("Error: Please input genome type: 'mm10', 'mm9', 'hg38', or 'hg19'")
    }
    anno<-anno[is.na(anno[,1])==FALSE,]
    return(anno)
@@ -225,14 +234,14 @@ if(Ontology =="GOterm") {
 if(missing(genome)){genome="hg19"}
 #####load  GO_GENCODE_databse_intersect_gene information
 if(genome=="hg38"){
-data(GO_GENCODE_df_hg_v20,package="seq2pathway.data")
-GO_GENCODE_df<-GO_GENCODE_df_hg_v20
+data(GO_GENCODE_df_hg_v36,package="seq2pathway.data")
+GO_GENCODE_df<-GO_GENCODE_df_hg_v36
 }else if(genome=="hg19"){
 data(GO_GENCODE_df_hg_v19,package="seq2pathway.data")
 GO_GENCODE_df<-GO_GENCODE_df_hg_v19
 }else if(genome=="mm10"){
-data(GO_GENCODE_df_mm_vM4,package="seq2pathway.data")
-GO_GENCODE_df<-GO_GENCODE_df_mm_vM4
+data(GO_GENCODE_df_mm_vM25,package="seq2pathway.data")
+GO_GENCODE_df<-GO_GENCODE_df_mm_vM25
 }else if(genome=="mm9"){
 data(GO_GENCODE_df_mm_vM1,package="seq2pathway.data")
 GO_GENCODE_df<-GO_GENCODE_df_mm_vM1
@@ -443,14 +452,14 @@ if(class(gsmap)!="GSA.genesets"){stop("Error: gsmap should be GAS.genesets objec
 #######check genome
 if(missing(genome)){genome="hg19"}
 if(genome=="hg38"){
-data(Msig_GENCODE_df_hg_v20,package="seq2pathway.data")
-Msig_GENCODE_df<-Msig_GENCODE_df_hg_v20
+data(Msig_GENCODE_df_hg_v36,package="seq2pathway.data")
+Msig_GENCODE_df<-Msig_GENCODE_df_hg_v36
 }else if(genome=="hg19"){
 data(Msig_GENCODE_df_hg_v19,package="seq2pathway.data")
 Msig_GENCODE_df<-Msig_GENCODE_df_hg_v19
 }else if(genome=="mm10"){
-data(Msig_GENCODE_df_mm_vM4,package="seq2pathway.data")
-Msig_GENCODE_df<-Msig_GENCODE_df_mm_vM4
+data(Msig_GENCODE_df_mm_vM25,package="seq2pathway.data")
+Msig_GENCODE_df<-Msig_GENCODE_df_mm_vM25
 }else if(genome=="mm9"){
 data(Msig_GENCODE_df_mm_vM1,package="seq2pathway.data")
 Msig_GENCODE_df<-Msig_GENCODE_df_mm_vM1
@@ -846,14 +855,22 @@ Sys.which2 <- function(cmdname)
 ### First try 'python3', then try 'python'.
 get_python3_command_path <- function()
 {
-  python3_command_path <- Sys.which2("python3")
-  if (python3_command_path != "")
-    return(python3_command_path)
-  ## On some systems (e.g. Windows) the name of the Python 3 command
-  ## might be 'python', not 'python3'.
+#  python3_command_path <- Sys.which2("python3") #3/3/2021 by Holly
   python3_command_path <- Sys.which2("python")
   if (python3_command_path != "")
-    return(python3_command_path)
+    temp <- system("python -V", intern = TRUE)
+      if(length(temp) > 0){
+        return(python3_command_path)}
+      else{
+        print("system python outdated, checking directly")
+      }
+  ## On some systems (e.g. Windows) the name of the Python 3 command
+  ## might be 'python3', not 'python'.
+#  python3_command_path <- Sys.which2("python")
+  python3_command_path <- Sys.which2("python3")  #3/3/2021 by Holly
+  if (python3_command_path != ""){
+    print(paste0("python3 found: ",python3_command_path))
+    return(python3_command_path)}
   stop("Couldn't find command 'python3' (or 'python') on your system.\n",
        "  If Python 3 is installed on your system, make sure that the\n",
        "  'python3' (or 'python') executable is in your PATH.")
@@ -901,10 +918,18 @@ runseq2gene <-
     if(length(genome>1)){genome=genome[1]}
     
     ### assign the path of main function
+    ### file AJ_1 for hg19 and mm9
+    ### file AJ_2 for hg38 and mm10
+if(genome %in% c("hg19","mm9")){
+   path <-paste(system.file(package="seq2pathway"),
+#####		"/Function_PeakMutationAnnotation_GENCODE_05182015.py",sep="/") # This script works for Python 2.7
+        "/Function_PeakMutationAnnotation_GENCODE_05182015_AJ_1.py",sep="/") # This script works for Python 3.8
+} else {
     path <-paste(system.file(package="seq2pathway"),
-#####		"/scripts/Function_PeakMutationAnnotation_GENCODE_05182015.py",sep="/") # This script works for Python 2.7
-		"/scripts/Function_PeakMutationAnnotation_GENCODE_08182020.py",sep="/") # This script works for Python 3.8
-    
+#####		"/Function_PeakMutationAnnotation_GENCODE_05182015.py",sep="/") # This script works for Python 2.7
+		"/Function_PeakMutationAnnotation_GENCODE_01142021_AJ_2.py",sep="/") # This script works for Python 3.8
+}
+
     ## decide the platform
     mySys <- ifelse(length(grep("Windows",Sys.info()))==0, "L","W")
     
@@ -927,17 +952,21 @@ runseq2gene <-
 		file=tmpinfile,sep="\t",quote=FALSE,row.names = FALSE)}
     }
     tmpinfile = gsub("\\","/",tmpinfile,fixed =TRUE)
+    tmpinfile = gsub("//","/",tmpinfile,fixed=TRUE)
     tmpoutfile = tempfile()
     write.table(NULL, file=tmpoutfile,sep="\t",quote=FALSE,row.names = FALSE)
     tmpoutfile = gsub("\\","/",tmpoutfile,fixed =TRUE)
+    tmpoutfile = gsub("//","/",tmpoutfile,fixed=TRUE)
 
     tmpoutfile_UTR3 = tempfile()
     write.table(NULL, file=tmpoutfile_UTR3,sep="\t",quote=FALSE,row.names = FALSE)
     tmpoutfile_UTR3 = gsub("\\","/",tmpoutfile_UTR3,fixed =TRUE)
+    tmpoutfile_UTR3 = gsub("//","/",tmpoutfile_UTR3,fixed=TRUE)
     
     tmp_ref_file = tempfile()
     write.table(NULL, file=tmp_ref_file,sep="\t",quote=FALSE,row.names = FALSE)
     tmp_ref_file = gsub("\\","/",tmp_ref_file,fixed =TRUE)
+    tmp_ref_file = gsub("//","/",tmp_ref_file,fixed=TRUE)
     
     if (mySys=="W") sink(paste(tempdir(),"\\",name,sep="")) else {
 		sink(file.path(tempdir(),name,fsep = .Platform$file.sep))} 
@@ -948,14 +977,27 @@ runseq2gene <-
     cat("from bisect import *",sep="\n")
     cat("",sep="\n")
     ###import our function module
-    ##cat("import importlib",sep="\n") ## update from import imp at 8092020 t0 import importlib
+    ##cat("import importlib",sep="\n") ## update from import imp at 8092020 to import importlib
     cat("from importlib.machinery import SourceFileLoader", sep="\n")
     ##cat("imp.load_source('Function_PeakMutationAnnotation_GENCODE_08182020',")
-    cat("SourceFileLoader('Function_PeakMutationAnnotation_GENCODE_08182020',")
+ #  cat("SourceFileLoader('Function_PeakMutationAnnotation_GENCODE_08182020',")
+    if(genome %in% c("hg19","mm9")){
+      cat("SourceFileLoader('Function_PeakMutationAnnotation_GENCODE_05182015_AJ_1',")
+    }
+    if(genome %in% c("hg38","mm10")){
+      cat("SourceFileLoader('Function_PeakMutationAnnotation_GENCODE_01142021_AJ_2',")
+    }
     cat("'", path, "').load_module()",sep="")
     cat("",sep="\n")
-    cat("from Function_PeakMutationAnnotation_GENCODE_08182020 import FindPeakMutation",sep="\n")
-    cat("",sep="\n")
+  #  cat("from Function_PeakMutationAnnotation_GENCODE_08182020 import FindPeakMutation",sep="\n")
+    if(genome %in% c("hg19","mm9")){
+      cat("from Function_PeakMutationAnnotation_GENCODE_05182015_AJ_1 import FindPeakMutation",sep="\n")
+    }
+    if(genome %in% c("hg38","mm10")){
+      cat("from Function_PeakMutationAnnotation_GENCODE_01142021_AJ_2 import FindPeakMutation",sep="\n")
+    }
+    
+      cat("",sep="\n")
     
     ####write parameters
     #cat(paste("inputpath=","'",inputpath,"/'",sep=""),sep="\n")
