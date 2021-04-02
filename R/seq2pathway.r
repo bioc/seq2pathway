@@ -859,8 +859,12 @@ get_python3_command_path <- function()
   python3_command_path <- Sys.which2("python")
   if (python3_command_path != "")
     temp <- system("python -V", intern = TRUE)
-      if(length(temp) > 0){
-        return(python3_command_path)}
+      if(exists("temp")){
+        if(length(temp) > 0){
+          return(python3_command_path)}
+        else{
+          print("system python outdated, checking directly")
+        }}
       else{
         print("system python outdated, checking directly")
       }
