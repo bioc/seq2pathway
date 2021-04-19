@@ -1,3 +1,7 @@
+seq2pathway 1.23.1
+- Upgraded datasets to hg38 and mm10
+- Upgraded python script from python2 to python3
+
 seq2pathway 1.15.0: 
 - Added function plotTop10
 

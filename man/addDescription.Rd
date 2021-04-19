@@ -8,12 +8,12 @@ Retrieve "gene description" attributes for gene symbol.
 A function wrappered from Rpackage "biomaRt". Get gene description information from gene symbol information.
 }
 \usage{
-addDescription(genome=c("hg19","mm10","mm9"), genevector)
+addDescription(genome=c("hg38","hg19","mm10","mm9"), genevector)
 }
 
 \arguments{
   \item{genome}{
-A character specifies the genome type. Currently, choice of "hg19", "mm10", and "mm9" is supported.
+A character specifies the genome type. Currently, choice of "hg38","hg19", "mm10", and "mm9" is supported.
 }
   \item{genevector}{
 A characteristic vector of gene symbols.

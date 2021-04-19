@@ -706,7 +706,7 @@ The function addDescription is wrapped from R package ``biomaRt'' \cite{Durinck0
         \begin{itemize}
           \item Inputs/parameters: 
             \begin{description}
-              \item[genome]{A character specifies the genome type. Currently, choice ``hg19'', ``mm10'', and ``mm9'' is supported.}
+              \item[genome]{A character specifies the genome type. Currently, choice ``hg19'', ``hg38'', ``mm10'', and ``mm9'' are supported.}
               \item[genevector]{A characteristic vector or list of gene symbols.}       
             \end{description}
           \item Output: \\
