@@ -4,30 +4,30 @@ function(genome=c("hg38","hg19", "mm10", "mm9"),genevector){
   require(biomaRt)
 if(missing(genome)){stop("Error: Please input genome type: 'mm10', 'mm9', 'hg38', or 'hg19'")}
 if(genome == "mm10"){
-   ensembl = useMart("ensembl",dataset="mmusculus_gene_ensembl")
-   anno <- getBM(attributes=c("mgi_symbol", "mgi_description"), filters = "mgi_symbol", 
+   ensembl = biomaRt::useMart("ensembl",dataset="mmusculus_gene_ensembl")
+   anno <- biomaRt::getBM(attributes=c("mgi_symbol", "mgi_description"), filters = "mgi_symbol", 
 		values = as.vector(genevector), mart = ensembl)
    anno <- anno[match(genevector, anno$mgi_symbol),]
    anno<-anno[is.na(anno$mgi_symbol)==FALSE,]
    }else if(genome == "mm9"){
-   ensembl = useMart('ENSEMBL_MART_ENSEMBL',dataset='mmusculus_gene_ensembl',
+   ensembl = biomaRt::useMart('ENSEMBL_MART_ENSEMBL',dataset='mmusculus_gene_ensembl',
 		host="may2012.archive.ensembl.org")
-   anno <- getBM(attributes=c("mgi_symbol", "mgi_description"), 
+   anno <- biomaRt::getBM(attributes=c("mgi_symbol", "mgi_description"), 
 		filters = "mgi_symbol", values = as.vector(genevector), 
 		mart = ensembl)
    anno <- anno[match(genevector, anno$mgi_symbol),]
    anno<-anno[is.na(anno$mgi_symbol)==FALSE,]
    }else if(genome == "hg38"){
-   ensembl = useMart("ensembl",dataset="hsapiens_gene_ensembl")
-   anno <- getBM(attributes=c("hgnc_symbol", "description"), 
+   ensembl = biomaRt::useMart("ensembl",dataset="hsapiens_gene_ensembl")
+   anno <- biomaRt::getBM(attributes=c("hgnc_symbol", "description"), 
 		filters = "hgnc_symbol", values = as.vector(genevector), 
 		mart = ensembl)
    anno <- anno[match(genevector, anno$hgnc_symbol),]
    anno<-anno[is.na(anno$hgnc_symbol)==FALSE,]
    }else if(genome == "hg19") {
-     ensembl = useMart(biomart="ensembl", host="grch37.ensembl.org", 
+     ensembl = biomaRt::useMart(biomart="ensembl", host="grch37.ensembl.org", 
                        dataset="hsapiens_gene_ensembl")
-     anno <- getBM(attributes=c("hgnc_symbol", "description"), 
+     anno <- biomaRt::getBM(attributes=c("hgnc_symbol", "description"), 
                    filters = "hgnc_symbol", values = as.vector(genevector), 
                    mart = ensembl)
      anno <- anno[match(genevector, anno$hgnc_symbol),]

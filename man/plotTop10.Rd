@@ -40,7 +40,7 @@
   newOntology <- list(GO_BP_list[1:200], Des_BP_list[1:200])
   FS_test<- FisherTest_GO_BP_MF_CC(gs=as.vector(rownames(dat_chip)),
                                  Ontology="newOntology", newOntology=newOntology)
-  plotTop10(FS_test$newOntology)
+  plotTop10(FS_test$newOntology, fdr=.3)
 }
 
 \keyword{methods}
