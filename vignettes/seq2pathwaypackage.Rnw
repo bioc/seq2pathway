@@ -182,6 +182,10 @@ Here we introduce these two main functions separately. For each function, we des
           \hline
           Mouse & M4(Aug.2014) & GRCm38.p3/mm10 & 22032 & 6951 & 5853 & 7957 & 43346\\
           \hline
+          Human & 38(May 2021) & GRCh38.p13/hg36 & 19955 & 17944 & 7567 & 14773 & 60649\\
+          \hline
+          Mouse & M25(May 2021) & GRCm38.p6/mm10 & 21834 & 13188 & 6105 & 13737 & 55359\\
+          \hline
           \end{tabular}
           \label{table:statistics}
       \end{table}
